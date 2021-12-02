@@ -1,28 +1,78 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld @deleteUserData="deleteUserData" @getUserData="getUserData" />
+    <section v-if="users.length > 0">
+      <table>
+        <tbody>
+          <tr v-for="user in users" :key="user.id">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.job }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <br>
+    <hr>
+    <br>
+    <div contenteditable="true">contentEditable test</div>
+    <p>
+      <abbr title="Node Package Manager">NPM</abbr> was founded in 1948.
+    </p>
+    <p title="Free Web tutorials">W3Schools</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  data() {
+    return {
+      isShowMessageBox: true,
+      users: [],
+    };
+  },
+  methods: {
+    getUserData(data) {
+      this.users = data;
+    },
+    deleteUserData() {
+      if (this.users.length > 0) {
+        this.users = [];
+      } else {
+        this.$alert("삭제 가능한 데이터가 존재하지 않습니다.");
+      }
+    },
+  },
+};
 </script>
 
 <style>
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+table {
+  width: 500px;
+  margin: auto;
+}
+
+tr,
+td {
+  border: 1px solid #2c3e50;
 }
 </style>
