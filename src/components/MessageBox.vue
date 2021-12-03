@@ -52,26 +52,13 @@ export default {
   data() {
     return {
       selected: true,
-      isShow: false,
       isConfirmed: true
     };
   },
   methods: {
-    cancalAlert() {
-      // console.log('취소 아니면 어떡하지..')
-      // this.selected = false;
-    },
-    confirmAlert() {
-      // console.log('확인 아니면 어떡하지 ㅎ')      
-      // this.$el.remove()
-    },
+    cancalAlert() {},
+    confirmAlert() { },
   },
-  beforeDestroy () {
-    // const cancelBtn = this.$el.querySelector('.-cancel')
-    // cancelBtn.removeEventListener('click', confirmClickEvent)
-    // this.$el.remove()
-    console.log('beforeDestory 호출');
-  }
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HelloWorld @deleteUserData="deleteUserData" @getUserData="getUserData" />
-    <section v-if="users.length > 0">
+    <section v-if="users.length > 0" style="margin-top:30px;">
       <table>
         <tbody>
           <tr v-for="user in users" :key="user.id">
@@ -39,11 +39,18 @@ export default {
   },
   methods: {
     getUserData(data) {
+      // 이미 데이터를 불러왔을 경우
+      if(this.users.length === data.length) {
+        this.$alert('이미 데이터를 불러왔습니다.')
+        return 
+      }
       this.users = data;
     },
     deleteUserData() {
+      // 데이터가 존재하면 => 삭제
       if (this.users.length > 0) {
         this.users = [];
+        this.$alert("성공적으로 데이터를 삭제했습니다.");
       } else {
         this.$alert("삭제 가능한 데이터가 존재하지 않습니다.");
       }

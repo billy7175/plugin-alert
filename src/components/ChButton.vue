@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name:"Button",
+    name:"ChButton",
     props: {
         type:{
             type:String,
@@ -23,7 +23,9 @@ export default {
     font-weight:500;
 }
 
-.ch-button.is-primary {
-    background:#3E57C9; color:#fff; 
-}
+.ch-button.is-primary {background:#3E57C9; color:#fff; }
+.ch-button.is-warning {background:#da2020; color:#fff;} 
+.ch-button.is-success {background:#3E57C9; color:#fff;} 
+.ch-button.is-loading {background:#000; color:#fff;} 
+
 </style>
